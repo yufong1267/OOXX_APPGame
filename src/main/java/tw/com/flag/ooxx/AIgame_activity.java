@@ -272,7 +272,7 @@ public class AIgame_activity extends AppCompatActivity {
     }
 
     private void AiPlay(){
-        //AI重點權重 防禦>攻擊>下單點
+        //AI重點權重 攻擊(win)>防禦>下單點
         final Button show1 = (Button)findViewById(R.id.show1);
         final Button show2 = (Button)findViewById(R.id.show2);
         final Button show3 = (Button)findViewById(R.id.show3);
@@ -303,7 +303,222 @@ public class AIgame_activity extends AppCompatActivity {
         boolean N7 = show7.getText().toString().equals(" ");
         boolean N8 = show8.getText().toString().equals(" ");
         boolean N9 = show9.getText().toString().equals(" ");
-        //首先 防禦
+        //------------------------------------------------------------------------------------------------------------------
+        //這邊以下開始攻擊
+        boolean A1 = show1.getText().toString().equals("O");
+        boolean A2 = show2.getText().toString().equals("O");
+        boolean A3 = show3.getText().toString().equals("O");
+        boolean A4 = show4.getText().toString().equals("O");
+        boolean A5 = show5.getText().toString().equals("O");
+        boolean A6 = show6.getText().toString().equals("O");
+        boolean A7 = show7.getText().toString().equals("O");
+        boolean A8 = show8.getText().toString().equals("O");
+        boolean A9 = show9.getText().toString().equals("O");
+
+        //橫線-1
+        if(A2 && A3 && N1 && !Ai_do)
+        {
+            show1.setText("O");
+            show1.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check1 = true;
+            Ai_do = true;
+        }
+        if(A1 && A3 && N2 && !Ai_do)
+        {
+            show2.setText("O");
+            show2.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check2 = true;
+            Ai_do = true;
+        }
+        if(A1 && A2 && N3 && !Ai_do)
+        {
+            show3.setText("O");
+            show3.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check3 = true;
+            Ai_do = true;
+        }
+        //橫線-2
+        if(A5 && A6 && N4 && !Ai_do)
+        {
+            show4.setText("O");
+            show4.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check4 = true;
+            Ai_do = true;
+        }
+        if(A4 && A6 && N5 && !Ai_do)
+        {
+            show5.setText("O");
+            show5.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check5 = true;
+            Ai_do = true;
+        }
+        if(A4 && A5 && N6 && !Ai_do)
+        {
+            show6.setText("O");
+            show6.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check6 = true;
+            Ai_do = true;
+        }
+        //橫線-3
+        if(A8 && A9 && N7 && !Ai_do)
+        {
+            show7.setText("O");
+            show7.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check7 = true;
+            Ai_do = true;
+        }
+        if(A7 && A9 && N8 && !Ai_do)
+        {
+            show8.setText("O");
+            show8.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check8 = true;
+            Ai_do = true;
+        }
+        if(A7 && A8 && N9 && !Ai_do)
+        {
+            show9.setText("O");
+            show9.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check9 = true;
+            Ai_do = true;
+        }
+        //直線 攻擊
+        //直線-1
+        if(A4 && A7 && N1 && !Ai_do)
+        {
+            show1.setText("O");
+            show1.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check1 = true;
+            Ai_do = true;
+        }
+        if(A1 && A7 && N4 && !Ai_do)
+        {
+            show4.setText("O");
+            show4.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check4 = true;
+            Ai_do = true;
+        }
+        if(A1 && A4 && N7 && !Ai_do)
+        {
+            show7.setText("O");
+            show7.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check7 = true;
+            Ai_do = true;
+        }
+        //直線-2
+        if(A5 && A8 && N2 && !Ai_do)
+        {
+            show2.setText("O");
+            show2.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check2 = true;
+            Ai_do = true;
+        }
+        if(A2 && A8 && N5 && !Ai_do)
+        {
+            show5.setText("O");
+            show5.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check5 = true;
+            Ai_do = true;
+        }
+        if(A2 && A5 && N8 && !Ai_do)
+        {
+            show8.setText("O");
+            show8.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check8 = true;
+            Ai_do = true;
+        }
+        //直線-3
+        if(A6 && A9 && N3 && !Ai_do)
+        {
+            show3.setText("O");
+            show3.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check3 = true;
+            Ai_do = true;
+        }
+        if(A3 && A9 && N6 && !Ai_do)
+        {
+            show6.setText("O");
+            show6.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check6 = true;
+            Ai_do = true;
+        }
+        if(A3 && A6 && N9 && !Ai_do)
+        {
+            show9.setText("O");
+            show9.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check9 = true;
+            Ai_do = true;
+        }
+        //斜線 攻擊
+        //斜線-1
+        if(A5 && A9 && N1 && !Ai_do)
+        {
+            show1.setText("O");
+            show1.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check1 = true;
+            Ai_do = true;
+        }
+        if(A1 && A9 && N5 && !Ai_do)
+        {
+            show5.setText("O");
+            show5.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check5 = true;
+            Ai_do = true;
+        }
+        if(A1 && A5 && N9 && !Ai_do)
+        {
+            show9.setText("O");
+            show9.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check9 = true;
+            Ai_do = true;
+        }
+        //斜線-2
+        if(A5 && A7 && N3 && !Ai_do)
+        {
+            show3.setText("O");
+            show3.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check3 = true;
+            Ai_do = true;
+        }
+        if(A3 && A7 && N5 && !Ai_do)
+        {
+            show5.setText("O");
+            show5.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check5 = true;
+            Ai_do = true;
+        }
+        if(A3 && A5 && N7 && !Ai_do)
+        {
+            show7.setText("O");
+            show7.setTextColor(Color.parseColor("#0000ff"));
+            count++;
+            check7 = true;
+            Ai_do = true;
+        }
+//---------------------------------------------------------------------------------------------------------------攻擊結束
+        // 防禦
         //橫線-1
         if(c2 && c3 && N1 && !Ai_do)
         {
@@ -530,221 +745,8 @@ public class AIgame_activity extends AppCompatActivity {
             Ai_do = true;
             check_end();
         }
-        //------------------------------------------------------------------------------------------------------------------
-        //這邊以下開始攻擊
-        boolean A1 = show1.getText().toString().equals("O");
-        boolean A2 = show2.getText().toString().equals("O");
-        boolean A3 = show3.getText().toString().equals("O");
-        boolean A4 = show4.getText().toString().equals("O");
-        boolean A5 = show5.getText().toString().equals("O");
-        boolean A6 = show6.getText().toString().equals("O");
-        boolean A7 = show7.getText().toString().equals("O");
-        boolean A8 = show8.getText().toString().equals("O");
-        boolean A9 = show9.getText().toString().equals("O");
 
-        //橫線-1
-        if(A2 && A3 && N1 && !Ai_do)
-        {
-            show1.setText("O");
-            show1.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check1 = true;
-            Ai_do = true;
-        }
-        if(A1 && A3 && N2 && !Ai_do)
-        {
-            show2.setText("O");
-            show2.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check2 = true;
-            Ai_do = true;
-        }
-        if(A1 && A2 && N3 && !Ai_do)
-        {
-            show3.setText("O");
-            show3.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check3 = true;
-            Ai_do = true;
-        }
-        //橫線-2
-        if(A5 && A6 && N4 && !Ai_do)
-        {
-            show4.setText("O");
-            show4.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check4 = true;
-            Ai_do = true;
-        }
-        if(A4 && A6 && N5 && !Ai_do)
-        {
-            show5.setText("O");
-            show5.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check5 = true;
-            Ai_do = true;
-        }
-        if(A4 && A5 && N6 && !Ai_do)
-        {
-            show6.setText("O");
-            show6.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check6 = true;
-            Ai_do = true;
-        }
-        //橫線-3
-        if(A8 && A9 && N7 && !Ai_do)
-        {
-            show7.setText("O");
-            show7.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check7 = true;
-            Ai_do = true;
-        }
-        if(A7 && A9 && N8 && !Ai_do)
-        {
-            show8.setText("O");
-            show8.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check8 = true;
-            Ai_do = true;
-        }
-        if(A7 && A8 && N9 && !Ai_do)
-        {
-            show9.setText("O");
-            show9.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check9 = true;
-            Ai_do = true;
-        }
-        //直線 攻擊
-        //直線-1
-        if(A4 && A7 && N1 && !Ai_do)
-        {
-            show1.setText("O");
-            show1.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check1 = true;
-            Ai_do = true;
-        }
-        if(A1 && A7 && N4 && !Ai_do)
-        {
-            show4.setText("O");
-            show4.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check4 = true;
-            Ai_do = true;
-        }
-        if(A1 && A4 && N7 && !Ai_do)
-        {
-            show7.setText("O");
-            show7.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check7 = true;
-            Ai_do = true;
-        }
-        //直線-2
-        if(A5 && A8 && N2 && !Ai_do)
-        {
-            show2.setText("O");
-            show2.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check2 = true;
-            Ai_do = true;
-        }
-        if(A2 && A8 && N5 && !Ai_do)
-        {
-            show5.setText("O");
-            show5.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check5 = true;
-            Ai_do = true;
-        }
-        if(A2 && A5 && N8 && !Ai_do)
-        {
-            show8.setText("O");
-            show8.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check8 = true;
-            Ai_do = true;
-        }
-        //直線-3
-        if(A6 && A9 && N3 && !Ai_do)
-        {
-            show3.setText("O");
-            show3.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check3 = true;
-            Ai_do = true;
-        }
-        if(A3 && A9 && N6 && !Ai_do)
-        {
-            show6.setText("O");
-            show6.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check6 = true;
-            Ai_do = true;
-        }
-        if(A3 && A6 && N9 && !Ai_do)
-        {
-            show9.setText("O");
-            show9.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check9 = true;
-            Ai_do = true;
-        }
-        //斜線 攻擊
-        //斜線-1
-        if(A5 && A9 && N1 && !Ai_do)
-        {
-            show1.setText("O");
-            show1.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check1 = true;
-            Ai_do = true;
-        }
-        if(A1 && A9 && N5 && !Ai_do)
-        {
-            show5.setText("O");
-            show5.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check5 = true;
-            Ai_do = true;
-        }
-        if(A1 && A5 && N9 && !Ai_do)
-        {
-            show9.setText("O");
-            show9.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check9 = true;
-            Ai_do = true;
-        }
-        //斜線-2
-        if(A5 && A7 && N3 && !Ai_do)
-        {
-            show3.setText("O");
-            show3.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check3 = true;
-            Ai_do = true;
-        }
-        if(A3 && A7 && N5 && !Ai_do)
-        {
-            show5.setText("O");
-            show5.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check5 = true;
-            Ai_do = true;
-        }
-        if(A3 && A5 && N7 && !Ai_do)
-        {
-            show7.setText("O");
-            show7.setTextColor(Color.parseColor("#0000ff"));
-            count++;
-            check7 = true;
-            Ai_do = true;
-        }
-//---------------------------------------------------------------------------------------------------------------攻擊結束
+
         //單一攻擊 權重(中間>角落>邊邊)
         if(N5 && !Ai_do) //中間
         {
