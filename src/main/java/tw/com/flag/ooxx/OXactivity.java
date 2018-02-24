@@ -20,6 +20,7 @@ public class OXactivity extends AppCompatActivity {
     private boolean check4 = false , check5 = false , check6 = false;
     private boolean check7 = false , check8 = false , check9 = false;
     private String final_winner = "和局";
+    public static boolean show_page2 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,21 @@ public class OXactivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oxactivity);
+        OXactivity.show_page2 = false;
+        if(!AIgame_activity.show_page1)
+        {
+            //這邊顯示一個甚麼page
+            final AlertDialog.Builder alertdialog = new AlertDialog.Builder(OXactivity.this);
+            alertdialog.setMessage("This is 2P page");
+            alertdialog.setNegativeButton("確認" , new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertdialog.show();
+            AIgame_activity.show_page1 = true;
+        }
 
         final Button show1 = (Button)findViewById(R.id.show1);
         final Button show2 = (Button)findViewById(R.id.show2);
@@ -231,7 +247,7 @@ public class OXactivity extends AppCompatActivity {
     {
         if(keyCode==KeyEvent.KEYCODE_VOLUME_DOWN  && event.getRepeatCount()==0){  //按下音量建 就會跳轉
 
-            Toast.makeText(this, "welcome to AI_Game", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "welcome to AI_Game", Toast.LENGTH_LONG).show();
             go_Aipage();
         }
         return false;

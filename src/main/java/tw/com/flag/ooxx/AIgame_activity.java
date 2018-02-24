@@ -1,5 +1,6 @@
 package tw.com.flag.ooxx;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
@@ -16,6 +18,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class AIgame_activity extends AppCompatActivity {
+    public static boolean show_page1 = false;
     private boolean check1 = false;
     private boolean check2 = false;
     private boolean check3 = false;
@@ -27,6 +30,8 @@ public class AIgame_activity extends AppCompatActivity {
     private boolean check9 = false;
     private int count = 0;
     private boolean Ai_do = false;
+    private String winner_who = "NO";
+    private boolean check_over = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,22 @@ public class AIgame_activity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aigame_activity);
+        AIgame_activity.show_page1 = false;
+        //onreate 的時候先跑出甚麼page
+        if(!OXactivity.show_page2)
+        {
+            //這邊顯示一個甚麼page
+            final AlertDialog.Builder alertdialog = new AlertDialog.Builder(AIgame_activity.this);
+            alertdialog.setMessage("This is AI page");
+            alertdialog.setNegativeButton("確認" , new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alertdialog.show();
+            OXactivity.show_page2 = true;
+        }
 
         final Button show1 = (Button)findViewById(R.id.show1);
         final Button show2 = (Button)findViewById(R.id.show2);
@@ -69,8 +90,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -86,8 +111,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -103,8 +132,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -120,8 +153,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -137,8 +174,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -154,8 +195,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -171,8 +216,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -188,8 +237,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -205,8 +258,12 @@ public class AIgame_activity extends AppCompatActivity {
                     Ai_do = false;
                     check_end();
                     check_win();
-                    AiPlay();
-                    check_win();
+                    if(!check_over)
+                    {
+                        AiPlay();
+                        check_win();
+                    }
+                    check_end();
                 }
             }
         });
@@ -218,7 +275,7 @@ public class AIgame_activity extends AppCompatActivity {
     {
         if(keyCode==KeyEvent.KEYCODE_VOLUME_UP  && event.getRepeatCount()==0){  //按下音量建 就會跳轉
 
-            Toast.makeText(this, "welcome to 2P_Game", Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "welcome to 2P_Game", Toast.LENGTH_LONG).show();
             go_2P_game();
         }
         return false;
@@ -264,10 +321,27 @@ public class AIgame_activity extends AppCompatActivity {
 //        }
         if(count >= 9)
         {
-            Toast.makeText(this, "over to restart", Toast.LENGTH_LONG).show();
-            Intent restart = getIntent();
-            startActivity(restart);
-            finish();
+            final AlertDialog.Builder alertdialog = new AlertDialog.Builder(AIgame_activity.this);
+            alertdialog.setMessage("請問要重新開始嘛?");
+            alertdialog.setTitle(winner_who + " win!!");
+            alertdialog.setPositiveButton("確認", new DialogInterface.OnClickListener()  {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                   // finish();
+                    Intent page = getIntent();
+                    startActivity(page);
+                    finish();
+                }
+            });
+            alertdialog.setNegativeButton("取消" , new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            alertdialog.show();
+            check_over = true;
         }
     }
 
@@ -747,7 +821,8 @@ public class AIgame_activity extends AppCompatActivity {
         }
 
 
-        //單一攻擊 權重(中間>角落>邊邊)
+        //單一攻擊 權重(角落>中間>邊邊)
+        //角落攻擊要先攻擊下過後的中間
         if(N5 && !Ai_do) //中間
         {
             show5.setText("O");
@@ -788,6 +863,7 @@ public class AIgame_activity extends AppCompatActivity {
             check9 = true;
             Ai_do = true;
         }
+
         if(N2 && !Ai_do) //邊邊1
         {
             show2.setText("O");
@@ -855,15 +931,15 @@ public class AIgame_activity extends AppCompatActivity {
         {
             //先偵測橫線
             count+=9;
-            Toast.makeText(this, "XX win!!", Toast.LENGTH_LONG).show();
+            winner_who = "you";
         }else if((X1 && X4 && X7) || (X2 && X5 && X8) || (X3 && X6 && X9)){
             //換直線
             count+=9;
-            Toast.makeText(this, "XX win!!", Toast.LENGTH_LONG).show();
+            winner_who = "you";
         }else if ((X1 && X5 && X9) || (X3 && X5 && X7)){
             //換斜線
             count+=9;
-            Toast.makeText(this, "XX win!!", Toast.LENGTH_LONG).show();
+            winner_who = "you";
         }
 
         //OOwin
@@ -871,16 +947,16 @@ public class AIgame_activity extends AppCompatActivity {
         {
             //先偵測橫線
             count+=9;
-            Toast.makeText(this, "OO win!!", Toast.LENGTH_LONG).show();
+            winner_who = "computer";
         }else if((O1 && O4 && O7) || (O2 && O5 && O8) || (O3 && O6 && O9)){
             //直線
             count+=9;
-            Toast.makeText(this, "OO win!!", Toast.LENGTH_LONG).show();
+            winner_who = "computer";
         }else if ((O1 && O5 && O9) || (O3 && O5 && O7))
         {
             //斜線
             count+=9;
-            Toast.makeText(this, "OO win!!", Toast.LENGTH_LONG).show();
+            winner_who = "computer";
         }
     }
 
